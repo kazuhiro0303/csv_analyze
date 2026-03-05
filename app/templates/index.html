@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regression App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4e73df, #1cc88a);
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+        .card {
+            background: white;
+            color: black;
+            width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #4e73df;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2e59d9;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>CSV Regression Analysis</h2>
+
+        <form action="/analyze" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+
+            <input type="text" name="feature" placeholder="説明変数 (x)" required>
+            <input type="text" name="target" placeholder="被説明変数 (y)" required>
+
+            <button type="submit">分析する</button>
+        </form>
+    </div>
+</body>
+</html>

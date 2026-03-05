@@ -1,0 +1,5 @@
+infra/
+.git
+.gitignore
+terraform.tfstate
+terraform.tfstate.backup

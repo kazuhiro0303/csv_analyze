@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fc;
+            padding: 40px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+        h2 {
+            color: #4e73df;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #4e73df;
+            color: white;
+        }
+        .formula {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: white;
+            background: #1cc88a;
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>回帰分析結果</h2>
+
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% else %}
+            <div class="formula">
+                {{ target }} = {{ coef }} × {{ feature }} + {{ intercept }}
+            </div>
+
+            <h3>各変数の特徴量</h3>
+            <table>
+                <tr>
+                    <th>変数</th>
+                    <th>平均</th>
+                    <th>標準偏差</th>
+                    <th>最小</th>
+                    <th>最大</th>
+                </tr>
+                {% for col, values in stats.items() %}
+                <tr>
+                    <td>{{ col }}</td>
+                    <td>{{ values['mean'] | round(2) }}</td>
+                    <td>{{ values['std'] | round(2) }}</td>
+                    <td>{{ values['min'] }}</td>
+                    <td>{{ values['max'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+        <a href="/">戻る</a>
+    </div>
+</body>
+</html>

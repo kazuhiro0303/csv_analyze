@@ -1,7 +1,11 @@
 __pycache__/
 *.pyc
-.env
-.venv
+
 terraform.tfstate
 terraform.tfstate.backup
+.terraform.lock.hcl
 .terraform/
+
+*.log
+
+.DS_Store
